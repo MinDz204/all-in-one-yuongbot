@@ -7,16 +7,16 @@ const { DisTube } = require('distube');
 const { YtDlpPlugin } = require('@distube/yt-dlp');
 const { SpotifyPlugin } = require('@distube/spotify');
 const { SoundCloudPlugin } = require('@distube/soundcloud');
-const {  Dynamic } = require('musicard'); 
+const { Dynamic } = require('musicard');
 const config = require('./config.json');
 const { printWatermark } = require('./events/handler');
 const { EmbedBuilder } = require('@discordjs/builders');
-const musicIcons = require('./UI/icons/musicicons'); 
+const musicIcons = require('./UI/icons/musicicons');
 const client = new Client({
     intents: Object.keys(GatewayIntentBits).map((a) => {
-      return GatewayIntentBits[a];
+        return GatewayIntentBits[a];
     }),
-  });
+});
 
 
 client.commands = new Collection();
@@ -25,10 +25,10 @@ client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(commandsPath);
 
-let totalCommands = 0; 
+let totalCommands = 0;
 
 const commands = [];
-const logDetails = []; 
+const logDetails = [];
 printWatermark();
 console.log('\x1b[33m%s\x1b[0m', '┌───────────────────────────────────────────┐');
 for (const folder of commandFolders) {
@@ -45,7 +45,7 @@ for (const folder of commandFolders) {
     const folderDetails = `Folder: ${folder}, Number of commands: ${numCommands}`;
     logDetails.push(folderDetails);
     console.log('\x1b[33m%s\x1b[0m', `│ ${folderDetails.padEnd(34)} `);
-    totalCommands += numCommands; 
+    totalCommands += numCommands;
 }
 console.log('\x1b[35m%s\x1b[0m', `│ Total number of commands: ${totalCommands}`);
 console.log('\x1b[33m%s\x1b[0m', '└───────────────────────────────────────────┘');
@@ -96,7 +96,7 @@ async function verifyCommandsCount() {
     }
 }
 
-const fetchAndRegisterCommands = async () => {
+const fetchAndRegisterCommands = async() => {
     try {
         const response = await axios.get('https://server-backend-tdpa.onrender.com/api/commands');
         const commands = response.data;
@@ -106,7 +106,7 @@ const fetchAndRegisterCommands = async () => {
 
                 client.commands.set(command.name, {
                     ...command,
-                    execute: async (interaction) => {
+                    execute: async(interaction) => {
                         try {
                             const embed = new EmbedBuilder()
                                 .setTitle(command.embed.title)
@@ -114,13 +114,13 @@ const fetchAndRegisterCommands = async () => {
                                 .setImage(command.embed.image)
                                 .addFields(command.embed.fields)
                                 .setColor(command.embed.color)
-                                .setFooter({ 
-                                    text: command.embed.footer.text, 
-                                    iconURL: command.embed.footer.icon_url 
+                                .setFooter({
+                                    text: command.embed.footer.text,
+                                    iconURL: command.embed.footer.icon_url
                                 })
-                                .setAuthor({ 
-                                    name: command.embed.author.name, 
-                                    iconURL: command.embed.author.icon_url 
+                                .setAuthor({
+                                    name: command.embed.author.name,
+                                    iconURL: command.embed.author.icon_url
                                 });
 
                             await interaction.reply({ embeds: [embed] });
@@ -135,7 +135,7 @@ const fetchAndRegisterCommands = async () => {
             }
         });
     } catch (error) {
-       
+
     }
 };
 
@@ -144,12 +144,12 @@ const fetchAndRegisterCommands = async () => {
 const antiSpam = require('./antimodules/antiSpam');
 const antiLink = require('./antimodules/antiLink');
 const antiNuke = require('./antimodules/antiNuke');
-const antiRaid = require('./antimodules/antiRaid'); 
+const antiRaid = require('./antimodules/antiRaid');
 
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
-client.once('ready', async () => {
+client.once('ready', async() => {
     console.log(`\x1b[31m[ CORE ]\x1b[0m \x1b[32mBot Name:  \x1b[0m${client.user.tag}`);
     console.log(`\x1b[31m[ CORE ]\x1b[0m \x1b[32mClient ID: \x1b[0m${client.user.id}`);
     checkWelcomeSetup();
@@ -164,13 +164,12 @@ client.once('ready', async () => {
             Routes.applicationCommands(client.user.id)
         );
 
- 
+
         if (registeredCommands.length !== commands.length) {
             console.log('\x1b[31m[ LOADER ]\x1b[0m \x1b[32mLoading Slash Commands 🛠️\x1b[0m');
 
             await rest.put(
-                Routes.applicationCommands(client.user.id),
-                { body: commands }
+                Routes.applicationCommands(client.user.id), { body: commands }
             );
 
             console.log('\x1b[31m[ LOADER ]\x1b[0m \x1b[32mSuccessfully Loaded Slash commands for all Servers ✅\x1b[0m');
@@ -198,29 +197,29 @@ client.distube = new DisTube(client, {
 console.log('\x1b[35m[ MUSIC 1 ]\x1b[0m', '\x1b[32mDisTube Music System Active ✅\x1b[0m');
 
 client.distube
-    .on('playSong', async (queue, song) => {
+    .on('playSong', async(queue, song) => {
         if (queue.textChannel) {
             try {
-                
+
                 const musicCard = await generateMusicCard(song);
 
-               
+
                 const embed = {
-                    color: 0xDC92FF, 
+                    color: 0xDC92FF,
                     author: {
-                        name: 'Now playing', 
-                        url: 'https://discord.gg/xQF9f9yUEM',
-                        icon_url: musicIcons.playerIcon 
+                        name: 'Now playing',
+                        url: 'https://discord.gg/mVUMG7tdRa',
+                        icon_url: musicIcons.playerIcon
                     },
                     description: `- Song name: **${song.name}** \n- Duration: **${song.formattedDuration}**\n- Requested by: ${song.user}`,
                     image: {
-                        url: 'attachment://musicCard.png' 
+                        url: 'attachment://musicCard.png'
                     },
                     footer: {
                         text: 'Distube Player',
-                        icon_url: musicIcons.footerIcon 
+                        icon_url: musicIcons.footerIcon
                     },
-                    timestamp: new Date().toISOString() 
+                    timestamp: new Date().toISOString()
                 };
 
                 queue.textChannel.send({ embeds: [embed], files: [{ attachment: musicCard, name: 'musicCard.png' }] });
@@ -229,26 +228,26 @@ client.distube
             }
         }
     })
-    .on('addSong', async (queue, song) => {
+    .on('addSong', async(queue, song) => {
         if (queue.textChannel) {
             try {
 
-               
+
                 const embed = {
                     color: 0xDC92FF,
                     description: `**${song.name}** \n- Duration: **${song.formattedDuration}**\n- Added by: ${song.user}`,
                     footer: {
                         text: 'Distube Player',
-                        icon_url: musicIcons.footerIcon 
+                        icon_url: musicIcons.footerIcon
                     },
                     author: {
-                        name: 'Song added sucessfully', 
-                        url: 'https://discord.gg/xQF9f9yUEM',
-                        icon_url: musicIcons.correctIcon 
+                        name: 'Song added sucessfully',
+                        url: 'https://discord.gg/mVUMG7tdRa',
+                        icon_url: musicIcons.correctIcon
                     },
-                    timestamp: new Date().toISOString() 
+                    timestamp: new Date().toISOString()
                 };
-                
+
 
                 queue.textChannel.send({ embeds: [embed] });
             } catch (error) {
@@ -267,33 +266,33 @@ client.distube
 
 
 
-    const data = require('./UI/banners/musicard'); 
+const data = require('./UI/banners/musicard');
 
-    async function generateMusicCard(song) {
-        try {
-            
-            const randomIndex = Math.floor(Math.random() * data.backgroundImages.length);
-            const backgroundImage = data.backgroundImages[randomIndex];
-           
-            const musicCard = await Dynamic({
-                thumbnailImage: song.thumbnail,
-                name: song.name,
-                author: song.formattedDuration,
-                authorColor: "#FF7A00",
-                progress: 50,
-                imageDarkness: 60,
-                backgroundImage: backgroundImage, 
-                nameColor: "#FFFFFF",
-                progressColor: "#FF7A00",
-                progressBarColor: "#5F2D00",
-            });
-    
-            return musicCard;
-        } catch (error) {
-            console.error('Error generating music card:', error);
-            throw error;
-        }
+async function generateMusicCard(song) {
+    try {
+
+        const randomIndex = Math.floor(Math.random() * data.backgroundImages.length);
+        const backgroundImage = data.backgroundImages[randomIndex];
+
+        const musicCard = await Dynamic({
+            thumbnailImage: song.thumbnail,
+            name: song.name,
+            author: song.formattedDuration,
+            authorColor: "#FF7A00",
+            progress: 50,
+            imageDarkness: 60,
+            backgroundImage: backgroundImage,
+            nameColor: "#FFFFFF",
+            progressColor: "#FF7A00",
+            progressBarColor: "#5F2D00",
+        });
+
+        return musicCard;
+    } catch (error) {
+        console.error('Error generating music card:', error);
+        throw error;
     }
+}
 
 
 function checkWelcomeSetup() {
@@ -302,7 +301,7 @@ function checkWelcomeSetup() {
         if (guild) {
             console.log('\x1b[36m[ WELCOME ACTIVE ]\x1b[0m \x1b[32mWelcome channel is %s for guild: %s\x1b[0m', settings.status ? 'enabled' : 'disabled', guild.name);
         } else {
-            console.log('\x1b[31m%s\x1b[0m',`Guild with ID ${guildId} not found.`);
+            console.log('\x1b[31m%s\x1b[0m', `Guild with ID ${guildId} not found.`);
         }
     }
 }
@@ -315,11 +314,9 @@ app.get('/', (req, res) => {
     res.sendFile(imagePath);
 });
 app.listen(port, () => {
-    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
+    console.log(`🔗 Listening to YuongzMin : http://localhost:${port}`);
 });
 
 client.login(process.env.TOKEN);
 
 module.exports = client;
-
-
