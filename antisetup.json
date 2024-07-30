@@ -1,14 +1,14 @@
 {
-    "1252159749076553738": {
+    "1242855741740679208": {
         "owners": [
-            "1004206704994566164",
-            "571670801703763979"
+            "1229076807379194041",
+            "931917709304807444"
         ],
         "admins": [
-            "597000696843206685",
-            "1162771658130587739"
+            "1229076807379194041",
+            "906157590998827089"
         ],
-        "logChannelId": "1264870842865553511",
+        "logChannelId": "1242855743955275918",
         "antiSpam": {
             "enabled": true,
             "messageCount": 5,
@@ -22,29 +22,29 @@
             "linkInterval": 60000
         },
         "antiNuke": {
-            "enabled": false,
+            "enabled": true,
             "channelDeleteLimit": 2,
             "channelDeleteTime": 10000,
             "memberKickLimit": 2,
             "memberBanLimit": 2
         },
         "antiRaid": {
-            "enabled": false,
+            "enabled": true,
             "joinLimit": 5,
             "timeWindow": 60000,
             "action": "kick"
         }
     },
-    "1262750919905247233": {
+    "732563342245232710": {
         "owners": [
-            "1004206704994566164",
-            "ownerID2"
+            "732562745249235006",
+            "1229076807379194041"
         ],
         "admins": [
-            "adminID1",
-            "adminID2"
+            "819181841415536660",
+            "1229076807379194041"
         ],
-        "logChannelId": "1264870842865553511",
+        "logChannelId": "1247625418513846405",
         "antiSpam": {
             "enabled": true,
             "messageCount": 5,
@@ -53,7 +53,7 @@
             "duration": 60000
         },
         "antiLink": {
-            "enabled": true,
+            "enabled": false,
             "mode": "full",
             "linkInterval": 60000
         },
