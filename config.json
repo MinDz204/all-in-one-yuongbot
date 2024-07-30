@@ -3,15 +3,15 @@
     "prefixes": {
         "default": "!",
         "server_specific": {
-            "1252159749076553738": "/",
-            "1106591466651922502": "."
+            "1242855741740679208": "/",
+            "732563342245232710": "."
         }
     },
     "youtubeapi": "AIzaSyAholYB1sYcBuZu5pKfB0RTmLWyPG7rN44",
     "geniusToken": "0CHr9jtPjR7EKraXUVv6__8ELmEwFeUwt5vYAhk-is_fGOq-10-epdMzESkMPUnf",
     "hentaicommands": {
-        "1252159749076553738": {
-            "status": false
+        "1242855741740679208": {
+            "status": true
         },
         "1264193986231271555": {
             "status": false
@@ -20,7 +20,7 @@
             "status": false
         },
         "1106591466651922502": {
-            "status": true
+            "status": false
         }
     },
     "excessCommands": {
@@ -41,12 +41,12 @@
     "spotifyClientId": "f71a3da30e254962965ca2a89d6f74b9",
     "spotifyClientSecret": "199a619d22dd4e55a4a2c1a7a3d70e63",
     "guilds": {
-        "PutGuildIDHere": {
-            "welcomeChannelId": "",
+        "1242855741740679208": {
+            "welcomeChannelId": "1242855742562631717",
             "status": true
         },
-        "Put2ndGuildIDHere": {
-            "welcomeChannelId": "",
+        "732563342245232710": {
+            "welcomeChannelId": "1059773233592811560",
             "status": true
         },
         "1252159749076553738": {
@@ -59,28 +59,28 @@
         }
     },
     "tickets": {
-        "1264193986231271555": {
-            "ticketChannelId": "1266651753902772224",
-            "adminRoleId": "1264203077200773191",
+        "1242855741740679208": {
+            "ticketChannelId": "1243128225517797479",
+            "adminRoleId": "1242855741824696427, 1242855741824696425",
             "status": true
         },
-        "1106591466651922502": {
-            "ticketChannelId": "1267404603608006748",
-            "adminRoleId": "1267134214738939944",
+        "732563342245232710": {
+            "ticketChannelId": "1231683081895674036",
+            "adminRoleId": "1065913818858917898",
             "status": true
         }
     },
     "voiceChannelSetup": {
-        "1264193986231271555": {
-            "mainVoiceChannelId": "1266678551151775794",
-            "adminRoleId": "1264203077200773191",
-            "managerChannelId": "1264207074909360179",
+        "1242855741740679208": {
+            "mainVoiceChannelId": "1242881948976676874",
+            "adminRoleId": "1242855741824696427, 1242855741824696425",
+            "managerChannelId": "1242855743955275920",
             "status": true
         },
-        "1252159749076553738": {
-            "mainVoiceChannelId": "1264867964650262579",
-            "adminRoleId": "1264868575865213023",
-            "managerChannelId": "1264868000293584969",
+        "732563342245232710": {
+            "mainVoiceChannelId": "1110779527786942487",
+            "adminRoleId": "1065913818858917898",
+            "managerChannelId": "1085918564143349911",
             "status": true
         },
         "1106591466651922502": {
@@ -105,7 +105,7 @@
         }
     },
     "owners": {
-        "1252159749076553738": "1162771658130587739",
-        "1106591466651922502": "1162771658130587739"
+        "1242855741740679208": "1229076807379194041",
+        "732563342245232710": "732562745249235006"
     }
 }
